@@ -96,6 +96,7 @@ export interface FetchOptions<TData = unknown> {
   cancelRefetch?: boolean
   meta?: FetchMeta
   initialPromise?: Promise<TData>
+  updateMeta?: Record<string, unknown>
 }
 
 interface FailedAction<TError> {
@@ -417,7 +418,7 @@ export class Query<
       > = {
         client: this.#client,
         queryKey: this.queryKey,
-        meta: this.meta,
+        meta: fetchOptions?.updateMeta ? {...this.meta, ...fetchOptions.updateMeta } : this.meta,
       }
 
       addSignalProperty(queryFnContext)
