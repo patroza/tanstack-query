@@ -579,6 +579,8 @@ export interface RefetchOptions extends ResultOptions {
    * Defaults to `true`.
    */
   cancelRefetch?: boolean
+
+  updateMeta?: Record<string, unknown>
 }
 
 export interface InvalidateQueryFilters<
